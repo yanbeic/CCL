@@ -21,8 +21,8 @@ We demonstrate our method can distill knowledge from the audio and visual modali
 - FFmpeg, FFprobe
 - Download datasets: [UCF101](https://www.crcv.ucf.edu/data/UCF101.php), [ActivityNet](https://github.com/activitynet/ActivityNet/tree/master/Crawler), [VGGSound](https://www.robots.ox.ac.uk/~vgg/data/vggsound/)
 
-### Data Preparation:
-- audio features are extracted based on the audio pre-trained model [PANNs](https://github.com/qiuqiangkong/audioset_tagging_cnn). The UCF101 audio features (`.npy` files) are provided under the directory `dataset/UCF101`. 
+### Data Preparation on UCF101 (example):
+- audio features are extracted based on the audio pre-trained model [PANNs](https://github.com/qiuqiangkong/audioset_tagging_cnn). The UCF101 audio features are provided under the directory `dataset/UCF101`. Please uncompress the `audiocnn14embed512_features.tar.gz` file for details. 
 - video data is convert to the `hdf5` format using the following command. Please specify the data directory `${UCF101_DATA_DIR}`, e.g. `datasets/UCF101/UCF-101`. Note: video data can be downloaded [here](https://www.crcv.ucf.edu/data/UCF101.php).
 ```
 python util_scripts/generate_video_hdf5.py --dir_path=${UCF101_DATA_DIR} --dst_path=datasets/UCF101/hdf5data --dataset=ucf101
@@ -69,4 +69,4 @@ sh scripts/run_ccl_ai.sh
 ```
 
 ## Acknowledgement
-This repository is partially built two open-source implementation: (1) [3D-ResNets-PyTorch](https://github.com/kenshohara/3D-ResNets-PyTorch) is used in video data preparation; (2) [PANNs](https://github.com/qiuqiangkong/audioset_tagging_cnn) is used for audio feature extraction.
+This repository is partially built with two open-source implementation: (1) [3D-ResNets-PyTorch](https://github.com/kenshohara/3D-ResNets-PyTorch) is used in video data preparation; (2) [PANNs](https://github.com/qiuqiangkong/audioset_tagging_cnn) is used for audio feature extraction.
