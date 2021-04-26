@@ -5,7 +5,7 @@ from pathlib import Path
 from utils import get_n_frames, get_n_frames_hdf5
 
 
-def convert_csv_to_dict(csv_path, subset):
+def convert_csv_to_dict(csv_path, subset, labels):
     data = pd.read_csv(csv_path, delimiter=' ', header=None)
     keys = []
     key_labels = []
@@ -14,9 +14,9 @@ def convert_csv_to_dict(csv_path, subset):
         slash_rows = data.iloc[i, 0].split('/')
         class_name = slash_rows[0]
         basename = slash_rows[1].split('.')[0]
-
-        keys.append(basename)
-        key_labels.append(class_name)
+        if class_name in labels:
+            keys.append(basename)
+            key_labels.append(class_name)
 
     database = {}
     for i in range(len(keys)):
@@ -43,8 +43,8 @@ def convert_ucf101_csv_to_json(label_csv_path, train_csv_path, val_csv_path,
         labels = [x.name for x in sorted(audio_dir_path.iterdir())]
     else:
         labels = load_labels(label_csv_path)
-    train_database = convert_csv_to_dict(train_csv_path, 'training')
-    val_database = convert_csv_to_dict(val_csv_path, 'validation')
+    train_database = convert_csv_to_dict(train_csv_path, 'training', labels)
+    val_database = convert_csv_to_dict(val_csv_path, 'validation', labels)
 
     dst_data = {}
     dst_data['labels'] = labels
