@@ -31,7 +31,7 @@ class NCELoss(torch.nn.Module):
     ## convert cos distance to exponential space
     pred_softmax = self.softmax(cos / self.temperature) ### convert to multi-class prediction scores
 
-    log_pos_softmax = - torch.log(pred_softmax + EPISILON) * (1 - self_mask).float()
+    log_pos_softmax = - torch.log(pred_softmax + EPISILON) * (1 - self_mask.float())
     log_neg_softmax = - torch.log(1 - pred_softmax + EPISILON) * self_mask.float()
     log_softmax = log_pos_softmax.sum(1) / (1 - self_mask).sum(1).float() + log_neg_softmax.sum(1) / self_mask.sum(1).float()
     loss = log_softmax
