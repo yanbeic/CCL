@@ -23,7 +23,7 @@ python main.py \
   --model ${MODEL} --model_depth ${DEPTH} --batch_size 16 --n_threads 16 --checkpoint 100 \
   --file_type hdf5 --sample_t_stride 1 --n_val_samples=3 \
   --train_crop random --val_freq=1 \
-  --lr_scheduler multistep --multistep_milestones=250 \
+  --lr_scheduler multistep \
   --learning_rate 0.001 --weight_decay 5e-4 \
   --n_epochs=300 --use_audio --use_image --loss_weight=0.5
 
@@ -39,4 +39,5 @@ python main.py \
 --file_type hdf5 --sample_t_stride 1 \
 --n_threads 16 --no_train --no_val --inference --output_topk 5 --inference_batch_size 1
 
+### print acc
 python -m util_scripts.eval_accuracy datasets/UCF101/ucf51_01.json results/${FOLDER}/val.json --subset validation -k 1 --ignore

@@ -17,7 +17,7 @@ We demonstrate our method can distill knowledge from the audio and visual modali
 ## Getting Started
 ### Prerequisites:
 - python >= 3.6.10 
-- pytorch == 1.1.0
+- pytorch >= 1.1.0
 - FFmpeg, FFprobe
 - Download datasets: [UCF101](https://www.crcv.ucf.edu/data/UCF101.php), [ActivityNet](https://github.com/activitynet/ActivityNet/tree/master/Crawler), [VGGSound](https://www.robots.ox.ac.uk/~vgg/data/vggsound/)
 

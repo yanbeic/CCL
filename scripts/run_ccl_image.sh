@@ -39,5 +39,6 @@ python main.py \
 --file_type hdf5 --sample_t_stride 1 \
 --n_threads 16 --no_train --no_val --inference --output_topk 5 --inference_batch_size 1
 
+### print acc
 python -m util_scripts.eval_accuracy datasets/UCF101/ucf51_01.json results/${FOLDER}/val.json --subset validation -k 1 --ignore
 

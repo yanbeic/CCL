@@ -153,10 +153,11 @@ def train_a_epoch(epoch,
 
         optimizer_av.zero_grad()
         total_loss_a.backward(retain_graph=True)
-        optimizer_av.step()
 
         optimizer.zero_grad()
         total_loss_v.backward()
+
+        optimizer_av.step()
         optimizer.step()
         #####################################################################################
         batch_time.update(time.time() - end_time)
@@ -286,10 +287,11 @@ def train_i_epoch(epoch,
 
         optimizer_iv.zero_grad()
         total_loss_i.backward(retain_graph=True)
-        optimizer_iv.step()
 
         optimizer.zero_grad()
         total_loss_v.backward()
+
+        optimizer_iv.step()
         optimizer.step()
         #####################################################################################
         batch_time.update(time.time() - end_time)
@@ -453,14 +455,15 @@ def train_ai_epoch(epoch,
 
         optimizer_av.zero_grad()
         total_loss_a.backward(retain_graph=True)
-        optimizer_av.step()
 
         optimizer_iv.zero_grad()
         total_loss_i.backward(retain_graph=True)
-        optimizer_iv.step()
 
         optimizer.zero_grad()
         total_loss_v.backward()
+
+        optimizer_av.step()
+        optimizer_iv.step()
         optimizer.step()
         #####################################################################################
         batch_time.update(time.time() - end_time)
